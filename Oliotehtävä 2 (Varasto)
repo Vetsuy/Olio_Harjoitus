@@ -21,17 +21,18 @@ namespace OlioOhjelma2
         {
             Console.Write("Anna tuotteen uusi paino: ");
             paino = int.Parse(Console.ReadLine());
-            return 0;
+            return paino;
         }
         public int maaranMuutos()
         {
             Console.Write("Anna tuotteen uusi määrä: ");
             maara = int.Parse(Console.ReadLine());
-            return 0;
+            return maara;
         }
-        public bool Saatavuus(bool uus)
+        public bool Saatavuus()
         {
-            saatavuus = uus;
+            Console.Write("Onko tuotetta saatavilla? (true/false): ");
+            saatavuus = bool.Parse(Console.ReadLine());
             return saatavuus;
         }
 
@@ -119,16 +120,18 @@ namespace OlioOhjelma2
             u_paino = int.Parse(Console.ReadLine());
             Console.Write("Anna tuotteen määrä: ");
             u_maara = int.Parse(Console.ReadLine());
+            Console.Write("Onko tuotetta saatavilla? (true/false): ");
+            u_saatavuus = bool.Parse(Console.ReadLine());
 
             tiedot.Tuotenimi = u_tuotenimi;
             tiedot.Paino = u_paino;
             tiedot.Maara = u_maara;
 
-            Console.WriteLine("Tuotteen nimi on {0}, tuotteen paino on {1} ja tuotteen määrä on {2}. Käytit getteriä ja setteriä sekä loit uuden olion.", tiedot.Tuotenimi, tiedot.Paino, tiedot.Maara);
+            Console.WriteLine("Tuotteen nimi on {0}, tuotteen paino on {1}, tuotteen määrä on {2} ja saatavuus on {3}. Käytit getteriä ja setteriä sekä loit uuden olion.", tiedot.Tuotenimi, tiedot.Paino, tiedot.Maara, tiedot.sgSaatavuus);
             Console.WriteLine();
 
             Varasto ylitiedot = new Varasto(u_tuotenimi, u_paino, u_maara, u_saatavuus);
-            Console.WriteLine("Tuotteen nimi on {0}, tuotteen paino on {1} ja tuotteen määrä on {2}. Loit uuden olion ja käytit getteriä.", ylitiedot.Tuotenimi, ylitiedot.Paino, ylitiedot.Maara, ylitiedot.sgSaatavuus);
+            Console.WriteLine("Tuotteen nimi on {0}, tuotteen paino on {1}, tuotteen määrä on {2} ja saatavuus on {3}. Loit uuden olion ja käytit getteriä.", ylitiedot.Tuotenimi, ylitiedot.Paino, ylitiedot.Maara, ylitiedot.sgSaatavuus);
             Console.WriteLine();
 
             Varasto oletiedot = new Varasto();
@@ -137,9 +140,16 @@ namespace OlioOhjelma2
 
             Varasto test = new Varasto();
 
-           Console.WriteLine(test.nimenMuutos());
-           Console.WriteLine(test.nimenMuutos());
-           Console.WriteLine(test.nimenMuutos());
+            Console.WriteLine("Tuotteen uusi nimi on: {0}. Käytit metodia.", test.nimenMuutos());
+            Console.WriteLine();
+            Console.WriteLine("Tuotteen uusi paino on: {0}. Käytit metodia.", test.painonMuutos());
+            Console.WriteLine();
+            Console.WriteLine("Tuotteen uusi määrä on: {0}. Käytit metodia.", test.maaranMuutos());
+            Console.WriteLine();
+            Console.Write("{0}. Käytit metodia.", test.Saatavuus());
+            Console.WriteLine();
+
+            Console.WriteLine("Loit {0} eri oliota.", Varasto.laskuri);
         }
     }
 }
