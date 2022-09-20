@@ -27,10 +27,10 @@ namespace olioOhjelma1
         // oletuskonstrukti
         public Kirjasto()
         {
-            string kirjan_nimi = "";
-            string kirjailija = "";
-            int sivumaara = 0;
-            int julkaisupaiva = 0;
+            kirjan_nimi = "";
+            kirjailija = "";
+            sivumaara = 0;
+            julkaisupaiva = 0;
         }
 
         // Ylikuormitettu konstrukti
