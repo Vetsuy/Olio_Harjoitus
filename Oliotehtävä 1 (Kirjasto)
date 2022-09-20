@@ -1,0 +1,141 @@
+using System;
+
+namespace olioOhjelma1
+{
+    class Kirjasto
+    {
+        // kentät
+        private string kirjan_nimi;
+        private string kirjailija;
+        private int sivumaara;
+        private int julkaisupaiva;
+
+        // Metodit
+        public string Palauta()
+        {
+            return "";
+        }
+        public string Lainaa()
+        {
+            return "";
+        }
+        public string Osta()
+        {
+            return "";
+        }
+
+        // oletuskonstrukti
+        public Kirjasto()
+        {
+            string kirjan_nimi = "";
+            string kirjailija = "";
+            int sivumaara = 0;
+            int julkaisupaiva = 0;
+        }
+
+        // Ylikuormitettu konstrukti
+        public Kirjasto(string u_kirjan_nimi, string u_kirjailija, int u_sivumaara, int u_julkaisupaiva)
+        {
+            kirjan_nimi = u_kirjan_nimi;
+            kirjailija = u_kirjailija;
+            sivumaara = u_sivumaara;
+            julkaisupaiva = u_julkaisupaiva;
+        }
+
+        // Get ja Set
+        public string KirjanNimi
+        {
+            set
+            {
+                kirjan_nimi = value;
+            }
+
+            get
+            {
+                return kirjan_nimi;
+            }
+        }
+
+        public string Kirjailija
+        {
+            set
+            {
+                kirjailija = value;
+            }
+
+            get
+            {
+                return kirjailija;
+            }
+        }
+
+        public int Sivumaara
+        {
+            set
+            {
+                sivumaara = value;
+            }
+
+            get
+            {
+                return sivumaara;
+            }
+        }
+
+        public int Julkaisupaiva
+        {
+            set
+            {
+                julkaisupaiva = value;
+            }
+
+            get
+            {
+                return julkaisupaiva;
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Veeti Eskelinen");
+            Console.WriteLine();
+
+            string u_kirjan_nimi;
+            string u_kirjailija;
+            int u_sivumaara = 0;
+            int u_julkaisupaiva = 0;
+
+            Console.Write("Anna lainattavan kirjan nimi: ");
+            u_kirjan_nimi = Console.ReadLine();
+            Console.Write("Anna kirjailijan nimi: ");
+            u_kirjailija = Console.ReadLine();
+
+            Kirjasto Kirja = new Kirjasto();
+            Console.WriteLine("Olio luotu!");
+
+            Console.WriteLine();
+
+            Kirja.KirjanNimi = u_kirjan_nimi;
+            Kirja.Kirjailija = u_kirjailija;
+
+            Console.WriteLine("Kirjan nimi on {0} ja kirjailija on {1}. Käytit getteriä ja setteriä", Kirja.KirjanNimi, Kirja.Kirjailija);
+
+            Console.WriteLine();
+
+            Kirjasto kirja1 = new Kirjasto(u_kirjan_nimi, u_kirjailija, u_sivumaara, u_julkaisupaiva);
+            Console.WriteLine("Uusi olio luotu!");
+
+            Console.WriteLine("Kirjasi on {0}, Kirjailija on {1}, kirjan sivumäärä on {2} ja kirjan julkaisupäivä on {3}. Käytit getteriä.", kirja1.KirjanNimi, kirja1.Kirjailija, kirja1.Sivumaara, kirja1.Julkaisupaiva);
+
+            Console.WriteLine();
+
+            Kirjasto kirja2 = new Kirjasto();
+            Console.WriteLine("UUsi olio luotu!");
+
+            Console.WriteLine("Kirjasi on {0}, Kirjailija on {1}, kirjan sivumäärä on {2} ja kirjan julkaisupäivä on {3}. Käytit getteriä.", kirja2.KirjanNimi, kirja2.Kirjailija, kirja2.Sivumaara, kirja2.Julkaisupaiva);
+        }
+    }
+}
