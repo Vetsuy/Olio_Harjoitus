@@ -1,0 +1,106 @@
+using System;
+
+namespace OlioOhjelma2
+{
+    class Varasto
+    {
+        private string tuotenimi;
+        private int paino;
+        private int maara;
+        private bool saatavuus;
+
+        public string nimenMuutos()
+        {
+            return "";
+        }
+        public int painonMuutos()
+        {
+            return 0;
+        }
+        public bool Saatavuus()
+        {
+            return true;
+        }
+
+        public Varasto()
+        {
+            string tuotenimi = "";
+            int paino = 0;
+            int maara = 0;
+            bool saatavuus = true;
+        }
+
+        public Varasto(string u_tuotenimi, int u_paino, int u_maara, bool u_saatavuus)
+        {
+            tuotenimi = u_tuotenimi;
+            paino = u_paino;
+            maara = u_maara;
+            saatavuus = u_saatavuus;
+        }
+
+        public string Tuotenimi
+        {
+            set
+            {
+                tuotenimi = value;
+            }
+            get
+            {
+                return tuotenimi;
+            }
+        }
+
+        public int Paino
+        {
+            set
+            {
+                paino = value;
+            }
+            get
+            {
+                return paino;
+            }
+        }
+
+        public int Maara
+        {
+            set
+            {
+                maara = value;
+            }
+            get
+            {
+                return maara;
+            }
+        }
+
+        public bool sgSaatavuus
+        {
+            set
+            {
+                saatavuus = value;
+            }
+            get
+            {
+                return saatavuus;
+            }
+        }
+
+        public static int laskuri = 0;
+
+        public Laskuri()
+        {
+            laskuri++;
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+
+            Console.WriteLine("Määrä on {0}", Varasto.laskuri);
+        }
+    }
+
+}
