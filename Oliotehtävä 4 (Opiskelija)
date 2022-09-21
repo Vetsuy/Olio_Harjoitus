@@ -1,0 +1,163 @@
+using System;
+
+namespace OlioOhjelma4
+{
+    class Opiskelija
+    {
+        public string nimi;
+        public int ika;
+        public int arvosana;
+        public string arvot;
+        public static int laskuri = 0;
+
+        public string luo_opiskelija()
+        {
+            Console.Write("Anna oppilaan nimi: ");
+            nimi = Console.ReadLine();
+            Console.Write("Anna oppilaan ikä: ");
+            ika = int.Parse(Console.ReadLine());
+            Console.Write("Anna oppilaan arvosana: ");
+            arvosana = int.Parse(Console.ReadLine());
+
+            Console.WriteLine();
+            Console.WriteLine("Uusi opikelija '{0}' luotu.", nimi);
+            Console.WriteLine("---------------------------");
+            return null;
+        }
+        public string muuta_nimi()
+        {
+            Console.Write("Anna oppilaan uusi nimi: ");
+            nimi = Console.ReadLine();
+            return nimi;
+        }
+        public int v_ika()
+        {
+            Console.Write("Anna oppilaan uusi ika: ");
+            ika = int.Parse(Console.ReadLine());
+            return ika;
+        }
+        public int muuta_arvosana()
+        {
+            Console.Write("Anna oppilaan uusi arvosana: ");
+            arvosana = int.Parse(Console.ReadLine());
+            return arvosana;
+        }
+        public void tulosta_tiedot()
+        {
+            Console.WriteLine(nimi);
+            Console.WriteLine(ika);
+            Console.WriteLine(arvosana);
+        }
+
+        public Opiskelija()
+        {
+            nimi = "";
+            ika = 0;
+            arvosana = 0;
+            laskuri++;
+        }
+
+        public Opiskelija(string nimi, int ika, int arvosana)
+        {
+            this.nimi = nimi;
+            this.ika = ika;
+            this.arvosana = arvosana;
+            laskuri++;
+        }
+
+        public string Nimi
+        {
+            set
+            {
+                nimi = value;
+            }
+            get
+            {
+                return nimi;
+            }
+        }
+
+        public int Ika
+        {
+            set
+            {
+                ika = value;
+            }
+            get
+            {
+                return ika;
+            }
+        }
+
+        public int Arvosana
+        {
+            set
+            {
+                arvosana = value;
+            }
+            get
+            {
+                return arvosana;
+            }
+        }
+    }
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string u_nimi = "";
+            int u_ika = 0;
+            int u_arvosana = 0;
+            string vastaus = "K";
+
+            Opiskelija[] oppilas = new Opiskelija[4];
+            for (int i = 0; i < 4; i++)
+            {
+                Console.Write("Luodaanko uusi opiskelija? (K/E): ");
+                vastaus = Console.ReadLine();
+
+                if (vastaus == "K" || vastaus == "k")
+                {
+                    oppilas[i] = new Opiskelija();
+
+                    Console.WriteLine(oppilas[i].luo_opiskelija());
+                }
+                else
+                {
+                    Console.WriteLine("Lopetetaan...");
+                    Console.WriteLine();
+                }
+            }
+
+            Console.WriteLine("-------------");
+            Console.WriteLine(" Nimi: " + oppilas[0].Nimi + " \n Ikä: " + oppilas[0].Ika + " \n Arvosana: " + oppilas[0].Arvosana);
+            Console.WriteLine("-------------");
+            Console.WriteLine(" Nimi: " + oppilas[1].Nimi + " \n Ikä: " + oppilas[1].Ika + " \n Arvosana: " + oppilas[1].Arvosana);
+            Console.WriteLine("-------------");
+            Console.WriteLine(" Nimi: " + oppilas[2].Nimi + " \n Ikä: " + oppilas[2].Ika + " \n Arvosana: " + oppilas[2].Arvosana);
+            Console.WriteLine("-------------");
+            Console.WriteLine(" Nimi: " + oppilas[3].Nimi + " \n Ikä: " + oppilas[3].Ika + " \n Arvosana: " + oppilas[3].Arvosana);
+            Console.WriteLine("-------------");
+
+            for (int i = 0; i < 4; i++)
+            {
+                Console.Write("Haluatko muuttaa tietoja? (K/E): ");
+                string vastaus1 = Console.ReadLine();
+
+                if (vastaus == "K" || vastaus == "k")
+                {
+                    Console.Write("Anna oppilaan {0} uusi arvosana: ", oppilas[i].nimi);
+                    Console.WriteLine();
+                    u_arvosana = int.Parse(Console.ReadLine());
+                    Console.WriteLine("Oppilaan {0} uusi arvosana on {1} ", oppilas[i].nimi, u_arvosana);
+                }
+                else
+                {
+                    Console.WriteLine("Lopetetaan...");
+                    Console.WriteLine();
+                }
+            }
+        }
+    }
+}
