@@ -30,11 +30,11 @@ namespace OlioOhjelma4
             nimi = Console.ReadLine();
             return nimi;
         }
-        public int vanhentuminen()
+        public void vanhentuminen()
         {
-            Console.Write("Oppilas vanheni vuoden. ");
             ika++;
-            return ika;
+            Console.Write("Oppilas vanheni vuoden. Oppilas on nyt {0} vuotta vanha.", ika);
+            Console.WriteLine();
         }
         public int muuta_arvosana()
         {
@@ -138,6 +138,7 @@ namespace OlioOhjelma4
 
             for (int i = 0; i < 4; i++)
             {
+                Console.WriteLine();
                 Console.Write("Haluatko muuttaa tietoja? (K/E): ");
                 vastaus = Console.ReadLine();
                 Console.WriteLine();
