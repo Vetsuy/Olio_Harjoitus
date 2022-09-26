@@ -1,1 +1,65 @@
-Yes
+using System;
+
+namespace OlioOhjelma6
+{
+    class Kulkuneuvo
+    {
+        // Kentät
+        private int nopeus;
+        private int matkustajat;
+
+        // Oletuskonstruktori
+        public Kulkuneuvo()
+        {
+            nopeus = 0;
+            matkustajat = 0;
+        }
+
+        // Ylikuormitettu konstruktori
+        public Kulkuneuvo(int u_nopeus, int u_matkustajat)
+        {
+            nopeus = u_nopeus;
+            matkustajat = u_matkustajat;
+        }
+    }
+    class Laiva : Kulkuneuvo
+    {
+        // Kentät
+        private int vuosiluku;
+
+        // Oletuskonstruktori
+        public Laiva()
+        {
+            vuosiluku = 0;
+        }
+
+        // Ylikuormitettu konstruktori
+        public Laiva(int u_vuosiluku)
+        {
+            vuosiluku = u_vuosiluku;
+        }
+    }
+    class Lentokone : Kulkuneuvo
+    {
+        private string malli;
+
+        // Oletuskonstruktori
+        public Lentokone()
+        {
+            malli = "";
+        }
+
+        // Ylikuormitettu konstruktori
+        public Lentokone(string u_malli)
+        {
+            malli = u_malli;
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Hello World!");
+        }
+    }
+}
