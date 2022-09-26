@@ -132,7 +132,6 @@ namespace OlioOhjelma4
             Opiskelija[] oppilas = new Opiskelija[4];
             for (int i = 0; i < 4; i++)
             {
-                Console.WriteLine(); Console.WriteLine();
                 Console.Write("Luodaanko uusi opiskelija? (K/E): ");
                 vastaus = Console.ReadLine();
 
@@ -157,18 +156,19 @@ namespace OlioOhjelma4
 
             for (int i = 0; i < 4; i++)
             {
+                Console.WriteLine();
                 Console.Write("Haluatko muuttaa tietoja? (K/E): ");
                 vastaus = Console.ReadLine();
                 Console.WriteLine();
 
                 if (vastaus == "K" || vastaus == "k")
                 {
-                    Console.Write("Anna oppilaan {0} uusi arvosana: ", oppilas[i].nimi);
-                    u_arvosana = int.Parse(Console.ReadLine());
-                    Console.Write("Oppilaan {0} uusi arvosana on {1} ", oppilas[i].nimi, u_arvosana);
+                    Console.Write("Anna oppilaan {0} uusi arvosana: ", oppilas[i].Nimi);
+                    oppilas[i].Arvosana = int.Parse(Console.ReadLine());
+                    Console.WriteLine();
+                    Console.Write("Oppilaan {0} uusi arvosana on {1} ", oppilas[i].Nimi, oppilas[i].Arvosana);
                     Console.WriteLine();
                     oppilas[i].vanhentuminen();
-                    Console.WriteLine();
                 }
                 else
                 {
@@ -181,8 +181,8 @@ namespace OlioOhjelma4
             oppilas[1].tulosta_tiedot();
             oppilas[2].tulosta_tiedot();
             oppilas[3].tulosta_tiedot();
-            Console.WriteLine("Loit {0} eri oliota.", Opiskelija.laskuri);
             loppu:;
+            Console.WriteLine("Loit {0} eri oliota.", Opiskelija.laskuri);
         }
     }
 }
