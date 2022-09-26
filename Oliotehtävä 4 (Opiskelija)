@@ -4,10 +4,10 @@ namespace OlioOhjelma4
 {
     class Opiskelija
     {
-        public string nimi;
-        public int ika;
-        public int arvosana;
-        public string arvot;
+        private string nimi;
+        private int ika;
+        private int arvosana;
+        private string arvot;
         public static int laskuri = 0;
 
         public string luo_opiskelija()
@@ -106,9 +106,6 @@ namespace OlioOhjelma4
     {
         static void Main(string[] args)
         {
-            string u_nimi = "";
-            int u_ika = 0;
-            int u_arvosana = 0;
             string vastaus = "K";
 
             Opiskelija[] oppilas = new Opiskelija[4];
@@ -145,9 +142,9 @@ namespace OlioOhjelma4
 
                 if (vastaus == "K" || vastaus == "k")
                 {
-                    Console.Write("Anna oppilaan {0} uusi arvosana: ", oppilas[i].nimi);
-                    u_arvosana = int.Parse(Console.ReadLine());
-                    Console.Write("Oppilaan {0} uusi arvosana on {1} ", oppilas[i].nimi, u_arvosana);
+                    Console.Write("Anna oppilaan {0} uusi arvosana: ", oppilas[i].Nimi);
+                    oppilas[i].Arvosana = int.Parse(Console.ReadLine());
+                    Console.Write("Oppilaan {0} uusi arvosana on {1} ", oppilas[i].Nimi, oppilas[i].Arvosana);
                     Console.WriteLine();
                     oppilas[i].vanhentuminen();
                     Console.WriteLine();
@@ -163,8 +160,8 @@ namespace OlioOhjelma4
             oppilas[1].tulosta_tiedot();
             oppilas[2].tulosta_tiedot();
             oppilas[3].tulosta_tiedot();
-            Console.WriteLine("Loit {0} eri oliota.", Opiskelija.laskuri);
             loppu:;
+            Console.WriteLine("Loit {0} eri oliota.", Opiskelija.laskuri);
         }
     }
 }
