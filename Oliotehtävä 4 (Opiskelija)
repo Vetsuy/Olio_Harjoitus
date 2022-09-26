@@ -30,10 +30,10 @@ namespace OlioOhjelma4
             nimi = Console.ReadLine();
             return nimi;
         }
-        public int v_ika()
+        public int vanhentuminen()
         {
-            Console.Write("Anna oppilaan uusi ika: ");
-            ika = int.Parse(Console.ReadLine());
+            Console.Write("Oppilas vanheni vuoden. ");
+            ika++;
             return ika;
         }
         public int muuta_arvosana()
@@ -44,9 +44,9 @@ namespace OlioOhjelma4
         }
         public void tulosta_tiedot()
         {
-            Console.WriteLine(nimi);
-            Console.WriteLine(ika);
-            Console.WriteLine(arvosana);
+            Console.WriteLine("-------------");
+            Console.WriteLine(" Nimi: " + Nimi + " \n Ikä: " + Ika + " \n Arvosana: " + Arvosana);
+            Console.WriteLine("-------------");
         }
 
         public Opiskelija()
@@ -57,11 +57,11 @@ namespace OlioOhjelma4
             laskuri++;
         }
 
-        public Opiskelija(string nimi, int ika, int arvosana)
+        public Opiskelija(string u_nimi, int u_ika, int u_arvosana)
         {
-            this.nimi = nimi;
-            this.ika = ika;
-            this.arvosana = arvosana;
+            nimi = u_nimi;
+            ika = u_ika;
+            arvosana = u_arvosana;
             laskuri++;
         }
 
@@ -122,42 +122,48 @@ namespace OlioOhjelma4
                     oppilas[i] = new Opiskelija();
 
                     Console.WriteLine(oppilas[i].luo_opiskelija());
+                    Console.WriteLine();
                 }
                 else
                 {
                     Console.WriteLine("Lopetetaan...");
-                    Console.WriteLine();
+                    goto loppu;
                 }
             }
 
-            Console.WriteLine("-------------");
-            Console.WriteLine(" Nimi: " + oppilas[0].Nimi + " \n Ikä: " + oppilas[0].Ika + " \n Arvosana: " + oppilas[0].Arvosana);
-            Console.WriteLine("-------------");
-            Console.WriteLine(" Nimi: " + oppilas[1].Nimi + " \n Ikä: " + oppilas[1].Ika + " \n Arvosana: " + oppilas[1].Arvosana);
-            Console.WriteLine("-------------");
-            Console.WriteLine(" Nimi: " + oppilas[2].Nimi + " \n Ikä: " + oppilas[2].Ika + " \n Arvosana: " + oppilas[2].Arvosana);
-            Console.WriteLine("-------------");
-            Console.WriteLine(" Nimi: " + oppilas[3].Nimi + " \n Ikä: " + oppilas[3].Ika + " \n Arvosana: " + oppilas[3].Arvosana);
-            Console.WriteLine("-------------");
+            oppilas[0].tulosta_tiedot();
+            oppilas[1].tulosta_tiedot();
+            oppilas[2].tulosta_tiedot();
+            oppilas[3].tulosta_tiedot();
 
             for (int i = 0; i < 4; i++)
             {
                 Console.Write("Haluatko muuttaa tietoja? (K/E): ");
-                string vastaus1 = Console.ReadLine();
+                vastaus = Console.ReadLine();
+                Console.WriteLine();
 
                 if (vastaus == "K" || vastaus == "k")
                 {
                     Console.Write("Anna oppilaan {0} uusi arvosana: ", oppilas[i].nimi);
-                    Console.WriteLine();
                     u_arvosana = int.Parse(Console.ReadLine());
-                    Console.WriteLine("Oppilaan {0} uusi arvosana on {1} ", oppilas[i].nimi, u_arvosana);
+                    Console.Write("Oppilaan {0} uusi arvosana on {1} ", oppilas[i].nimi, u_arvosana);
+                    Console.WriteLine();
+                    oppilas[i].vanhentuminen();
+                    Console.WriteLine();
                 }
                 else
                 {
                     Console.WriteLine("Lopetetaan...");
-                    Console.WriteLine();
+                    goto loppu;
                 }
             }
+
+            oppilas[0].tulosta_tiedot();
+            oppilas[1].tulosta_tiedot();
+            oppilas[2].tulosta_tiedot();
+            oppilas[3].tulosta_tiedot();
+            Console.WriteLine("Loit {0} eri oliota.", Opiskelija.laskuri);
+            loppu:;
         }
     }
 }
