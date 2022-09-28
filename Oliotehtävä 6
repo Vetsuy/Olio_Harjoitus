@@ -7,12 +7,25 @@ namespace OlioOhjelma6
         // Kentät
         private int nopeus;
         private int matkustajat;
+        public static int laskuri = 0;
+
+        // Metodit
+        public void TulostaTiedot()
+        {
+            Console.WriteLine();
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine("Ajoneuvon nopeus on: {0}km/h" + " \n Ajoneuvon matkustajien määrä on: " + matkustajat, nopeus);
+            Console.WriteLine("------------------------------------");
+            Console.WriteLine();
+        }
 
         // Oletuskonstruktori
         public Kulkuneuvo()
         {
             nopeus = 0;
             matkustajat = 0;
+            laskuri++;
+            Console.WriteLine("Käytit oletuskonstruktoria.");
         }
 
         // Ylikuormitettu konstruktori
@@ -20,6 +33,36 @@ namespace OlioOhjelma6
         {
             nopeus = u_nopeus;
             matkustajat = u_matkustajat;
+            laskuri++;
+            Console.WriteLine("Käytit ylikuormitettua konstruktoria.");
+        }
+
+        // Getterit ja setterit
+        public int Nopeus
+        {
+            set 
+            {
+                Console.WriteLine("Käytit setteriä.");
+                nopeus = value;
+            }
+            get
+            {
+                Console.WriteLine("Käytit getteriä.");
+                return nopeus;
+            }
+        }
+        public int Matkustajat
+        {
+            set
+            {
+                Console.WriteLine("Käytit setteriä.");
+                matkustajat = value;
+            }
+            get
+            {
+                Console.WriteLine("Käytit getteriä.");
+                return matkustajat;
+            }
         }
     }
     class Laiva : Kulkuneuvo
@@ -27,39 +70,105 @@ namespace OlioOhjelma6
         // Kentät
         private int vuosiluku;
 
+        // Metodit
+        public void LaivanTiedot()
+        {
+            Console.WriteLine("Anna laivan vuosiluku: ");
+            vuosiluku = int.Parse(Console.ReadLine());
+            Console.WriteLine("Laivan vuosiluku on {0}", vuosiluku);
+        }
+        public void TulostaTiedot()
+        {
+            Console.WriteLine("Laivan nopeus on {0}km/h" + "\nLaivan matkustajien määrä on {1} " + "\nLaivan vuosiluku {2} ", Nopeus, Matkustajat, Vuosiluku);
+            Console.WriteLine("Käytit metodia.");
+        }
+
         // Oletuskonstruktori
-        public Laiva()
+        public Laiva() : base()
         {
             vuosiluku = 0;
         }
 
         // Ylikuormitettu konstruktori
-        public Laiva(int u_vuosiluku)
+        public Laiva(int u_nopeus, int u_matkustajat, int u_vuosiluku) : base(u_nopeus, u_matkustajat)
         {
             vuosiluku = u_vuosiluku;
+        }
+
+        // Getterit ja setterit
+        public int Vuosiluku
+        {
+            set { vuosiluku = value; }
+            get { return vuosiluku; }
         }
     }
     class Lentokone : Kulkuneuvo
     {
-        private string malli;
+        // Kentät
+        private int turbiinien_maara;
 
-        // Oletuskonstruktori
-        public Lentokone()
+        // Metodit
+        public void LentokoneenTiedot()
         {
-            malli = "";
+            Console.WriteLine("Anna lentokoneen turbiinien määrä: ");
+            turbiinien_maara = int.Parse(Console.ReadLine());
+            Console.WriteLine("Lentokoneella on {0} turbiineja", turbiinien_maara);
+        }
+        // Oletuskonstruktori
+        public Lentokone() : base()
+        {
+            turbiinien_maara = 0;
         }
 
         // Ylikuormitettu konstruktori
-        public Lentokone(string u_malli)
+        public Lentokone(int u_turbiinien_maara)
         {
-            malli = u_malli;
+            turbiinien_maara = u_turbiinien_maara;
+        }
+
+        // Getterit ja setterit
+        public int Turbiinien_maara
+        {
+            set { turbiinien_maara = value; }
+            get { return turbiinien_maara; }
         }
     }
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Lentokone olio1 = new Lentokone();
+            Console.WriteLine("Lentokoneen nopeus on {0}km/h" + "\nLentokoneen matkustajien määrä on " + olio1.Matkustajat, olio1.Nopeus);
+            Console.WriteLine();
+
+            Lentokone olio2 = new Lentokone();
+            Console.Write("Anna laivan nopeus: ");
+            olio2.Nopeus = int.Parse(Console.ReadLine());
+            Console.Write("Anna laivan matkustajien määrä: ");
+            olio2.Matkustajat = int.Parse(Console.ReadLine());
+            Console.WriteLine("Laivan nopeus on {0}km/h" + "\nLaivan matkustajien määrä on " + olio2.Matkustajat, olio2.Nopeus);
+            Console.WriteLine();
+
+            int u_nopeus = 0;
+            int u_matkustajat = 0;
+            int u_vuosiluku = 0;
+            
+            Console.Write("Anna laivan nopeus: ");
+            u_nopeus = int.Parse(Console.ReadLine());
+            Console.Write("Anna laivan matkustajien määrä: ");
+            u_matkustajat = int.Parse(Console.ReadLine());
+            Console.Write("Anna laivan vuosiluku: ");
+            u_vuosiluku = int.Parse(Console.ReadLine());
+
+            Laiva olio3 = new Laiva(u_nopeus, u_matkustajat, u_vuosiluku);
+            Console.WriteLine("Laivan nopeus on {0}km/h" + "\nLaivan matkustajien määrä on {1} " + "\nLaivan vuosiluku {2} ", olio3.Nopeus, olio3.Matkustajat, olio3.Vuosiluku);
+            Console.WriteLine();
+
+            Laiva olio4 = new Laiva();
+            
+            Console.WriteLine();
+            olio4.TulostaTiedot();
+            Console.WriteLine("Loit {0} oliota.", Kulkuneuvo.laskuri);
         }
     }
 }
