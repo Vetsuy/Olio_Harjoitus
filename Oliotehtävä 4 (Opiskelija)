@@ -7,40 +7,30 @@ namespace OlioOhjelma4
         private string nimi;
         private int ika;
         private int arvosana;
-        private string arvot;
         public static int laskuri = 0;
 
-        public string luo_opiskelija()
+        public void luo_opiskelija()
         {
             Console.Write("Anna oppilaan nimi: ");
             nimi = Console.ReadLine();
-            Console.Write("Anna oppilaan ikä: ");
-            ika = int.Parse(Console.ReadLine());
-            Console.Write("Anna oppilaan arvosana: ");
-            arvosana = int.Parse(Console.ReadLine());
 
             Console.WriteLine();
             Console.WriteLine("Uusi opikelija '{0}' luotu.", nimi);
             Console.WriteLine("---------------------------");
-            return null;
         }
-        public string muuta_nimi()
+        public void muuta_nimi()
         {
             Console.Write("Anna oppilaan uusi nimi: ");
             nimi = Console.ReadLine();
-            return nimi;
         }
-        public void vanhentuminen()
+        public void v_ika()
         {
             ika++;
-            Console.Write("Oppilas vanheni vuoden. Oppilas on nyt {0} vuotta vanha.", ika);
-            Console.WriteLine();
         }
-        public int muuta_arvosana()
+        public void muuta_arvosana()
         {
             Console.Write("Anna oppilaan uusi arvosana: ");
             arvosana = int.Parse(Console.ReadLine());
-            return arvosana;
         }
         public void tulosta_tiedot()
         {
@@ -106,7 +96,7 @@ namespace OlioOhjelma4
     {
         static void Main(string[] args)
         {
-            string vastaus = "K";
+            string vastaus;
 
             Opiskelija[] oppilas = new Opiskelija[4];
             for (int i = 0; i < 4; i++)
@@ -118,13 +108,13 @@ namespace OlioOhjelma4
                 {
                     oppilas[i] = new Opiskelija();
 
-                    Console.WriteLine(oppilas[i].luo_opiskelija());
-                    Console.WriteLine();
+                    oppilas[i].luo_opiskelija();
                 }
                 else
                 {
                     Console.WriteLine("Lopetetaan...");
-                    goto loppu;
+                    Console.WriteLine();
+                    return;
                 }
             }
 
@@ -138,21 +128,22 @@ namespace OlioOhjelma4
                 Console.WriteLine();
                 Console.Write("Haluatko muuttaa tietoja? (K/E): ");
                 vastaus = Console.ReadLine();
-                Console.WriteLine();
 
                 if (vastaus == "K" || vastaus == "k")
                 {
                     Console.Write("Anna oppilaan {0} uusi arvosana: ", oppilas[i].Nimi);
                     oppilas[i].Arvosana = int.Parse(Console.ReadLine());
-                    Console.Write("Oppilaan {0} uusi arvosana on {1} ", oppilas[i].Nimi, oppilas[i].Arvosana);
                     Console.WriteLine();
-                    oppilas[i].vanhentuminen();
-                    Console.WriteLine();
+                    Console.WriteLine("Oppilaan {0} uusi arvosana on {1} ", oppilas[i].Nimi, oppilas[i].Arvosana);
+
+                    oppilas[i].v_ika();
+                    Console.WriteLine("Oppilaan {0} uusi ikä on {1} ", oppilas[i].Nimi, oppilas[i].Ika);
                 }
                 else
                 {
                     Console.WriteLine("Lopetetaan...");
-                    goto loppu;
+                    Console.WriteLine();
+                    return;
                 }
             }
 
@@ -160,8 +151,8 @@ namespace OlioOhjelma4
             oppilas[1].tulosta_tiedot();
             oppilas[2].tulosta_tiedot();
             oppilas[3].tulosta_tiedot();
-            loppu:;
-            Console.WriteLine("Loit {0} eri oliota.", Opiskelija.laskuri);
+
+            Console.WriteLine("Loit {0} opiskelijaa", Opiskelija.laskuri);
         }
     }
 }
