@@ -55,6 +55,7 @@ namespace OlioOhjelma5
         }
         public void tulosta_tiedot()
         {
+            Console.WriteLine();
             Console.WriteLine("-------------");
             Console.WriteLine(" Nimi: " + Nimi + " \n Ikä: " + Ika + " \n Arvosana: " + Arvosana);
             Console.WriteLine("-------------");
