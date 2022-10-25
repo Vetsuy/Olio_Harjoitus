@@ -96,6 +96,8 @@ namespace OlioOhjelma4
     {
         static void Main(string[] args)
         {
+            Console.Write("Veeti Eskelinen");
+            Console.WriteLine();
             string vastaus;
 
             Opiskelija[] oppilas = new Opiskelija[4];
