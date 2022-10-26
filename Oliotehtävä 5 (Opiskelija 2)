@@ -1,4 +1,5 @@
 using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace OlioOhjelma5
 {
@@ -9,42 +10,40 @@ namespace OlioOhjelma5
         private int arvosana;
         public static int laskuri = 0;
 
-        public void Luo_opiskelija()
+        public void Muuta_nimi()
         {
             Console.Write("Anna oppilaan nimi: ");
             nimi = Console.ReadLine();
 
             Console.WriteLine();
-            Console.WriteLine("[ Uusi opikelija '{0}' luotu. ]", nimi);
-        }
-        public void Muuta_nimi()
-        {
-            Console.Write("Anna oppilaan uusi nimi: ");
-            nimi = Console.ReadLine();
+            Console.WriteLine("[ Oppilaan nimi on '{0}'. ]", nimi);
         }
         public void Vanhentuminen()
         {
             for (int i = 0; i < 99;)
             {
-                ika++;
-                Console.Write("Oppilas vanheni vuoden. Oppilas on nyt {0} vuotta vanha.", ika);
+                int vuodet;
+
+                vuodetAlku:
+                Console.WriteLine();
+                Console.Write("Monellako vuodella oppilas vanhenee?: ");
+                vuodet = int.Parse(Console.ReadLine());
+                Console.Write("Oppilas vanheni {0} vuotta. Oppilas on nyt {1} vuotta vanha.", vuodet, ika + vuodet);
                 Console.WriteLine();
 
-                if (ika == 18)
+                ika = ika + vuodet;
+
+                if (ika >= 18)
                 {
                     Console.WriteLine("Opiskelija on täysi-ikäinen!");
                 }
 
                 Console.WriteLine();
-                Console.Write("Haluatko vanhentaa oppilasta? (K/E) ");
+                Console.Write("Haluatko vanhentaa opiskelijaa lisää? (K/E): ");
                 string vastaus = Console.ReadLine();
 
-                if (vastaus == "E" || vastaus == "e")
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Siirrytään uuteen oppilaaseen...");
-                    return;
-                }
+                if (vastaus == "K" || vastaus == "k") goto vuodetAlku;
+                else Console.WriteLine("Siirrytään seuraavaan oppilaaseen..."); return;
             }
         }
         public void Muuta_arvosana()
@@ -132,7 +131,7 @@ namespace OlioOhjelma5
                 {
                     oppilas[i] = new Opiskelija();
 
-                    oppilas[i].Luo_opiskelija();
+                    oppilas[i].Muuta_nimi();
                 }
                 else
                 {
@@ -174,7 +173,7 @@ namespace OlioOhjelma5
                     Console.WriteLine("Oppilaan {0} uusi arvosana on {1} ", oppilas[0].Nimi, oppilas[0].Arvosana);
 
                     oppilas[0].Vanhentuminen();
-                    Console.WriteLine("Oppilaan {0} uusi ikä on {1} ", oppilas[0].Nimi, oppilas[0].Ika);
+                    Console.WriteLine("Oppilaan {0} ikä on {1} ", oppilas[0].Nimi, oppilas[0].Ika);
                     break;
 
                 case 2:
@@ -185,7 +184,7 @@ namespace OlioOhjelma5
                     Console.WriteLine("Oppilaan {0} uusi arvosana on {1} ", oppilas[1].Nimi, oppilas[1].Arvosana);
 
                     oppilas[1].Vanhentuminen();
-                    Console.WriteLine("Oppilaan {0} uusi ikä on {1} ", oppilas[1].Nimi, oppilas[1].Ika);
+                    Console.WriteLine("Oppilaan {0} ikä on {1} ", oppilas[1].Nimi, oppilas[1].Ika);
                     break;
 
                 case 3:
@@ -196,7 +195,7 @@ namespace OlioOhjelma5
                     Console.WriteLine("Oppilaan {0} uusi arvosana on {1} ", oppilas[2].Nimi, oppilas[2].Arvosana);
 
                     oppilas[2].Vanhentuminen();
-                    Console.WriteLine("Oppilaan {0} uusi ikä on {1} ", oppilas[2].Nimi, oppilas[2].Ika);
+                    Console.WriteLine("Oppilaan {0} ikä on {1} ", oppilas[2].Nimi, oppilas[2].Ika);
                     break;
 
                 case 4:
@@ -207,7 +206,7 @@ namespace OlioOhjelma5
                     Console.WriteLine("Oppilaan {0} uusi arvosana on {1} ", oppilas[3].Nimi, oppilas[3].Arvosana);
 
                     oppilas[3].Vanhentuminen();
-                    Console.WriteLine("Oppilaan {0} uusi ikä on {1} ", oppilas[3].Nimi, oppilas[3].Ika);
+                    Console.WriteLine("Oppilaan {0} ikä on {1} ", oppilas[3].Nimi, oppilas[3].Ika);
                     break;
 
                 case 5:
