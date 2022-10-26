@@ -9,18 +9,13 @@ namespace OlioOhjelma4
         private int arvosana;
         public static int laskuri = 0;
 
-        public void Luo_opiskelija()
+        public void Muuta_nimi()
         {
             Console.Write("Anna oppilaan nimi: ");
             nimi = Console.ReadLine();
 
             Console.WriteLine();
-            Console.WriteLine("[ Uusi opikelija '{0}' luotu. ]", nimi);
-        }
-        public void Muuta_nimi()
-        {
-            Console.Write("Anna oppilaan uusi nimi: ");
-            nimi = Console.ReadLine();
+            Console.WriteLine("[ Oppilaan nimi on '{0}'. ]", nimi);
         }
         public void V_ika()
         {
@@ -111,7 +106,7 @@ namespace OlioOhjelma4
                 {
                     oppilas[i] = new Opiskelija();
 
-                    oppilas[i].Luo_opiskelija();
+                    oppilas[i].Muuta_nimi();
                 }
                 else
                 {
