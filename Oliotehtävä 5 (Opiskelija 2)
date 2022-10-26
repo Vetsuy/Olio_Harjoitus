@@ -9,21 +9,20 @@ namespace OlioOhjelma5
         private int arvosana;
         public static int laskuri = 0;
 
-        public void luo_opiskelija()
+        public void Luo_opiskelija()
         {
             Console.Write("Anna oppilaan nimi: ");
             nimi = Console.ReadLine();
 
             Console.WriteLine();
-            Console.WriteLine("Uusi opikelija '{0}' luotu.", nimi);
-            Console.WriteLine("---------------------------");
+            Console.WriteLine("[ Uusi opikelija '{0}' luotu. ]", nimi);
         }
-        public void muuta_nimi()
+        public void Muuta_nimi()
         {
             Console.Write("Anna oppilaan uusi nimi: ");
             nimi = Console.ReadLine();
         }
-        public void vanhentuminen()
+        public void Vanhentuminen()
         {
             for (int i = 0; i < 99;)
             {
@@ -48,14 +47,13 @@ namespace OlioOhjelma5
                 }
             }
         }
-        public void muuta_arvosana()
+        public void Muuta_arvosana()
         {
             Console.Write("Anna oppilaan uusi arvosana: ");
             arvosana = int.Parse(Console.ReadLine());
         }
-        public void tulosta_tiedot()
+        public void Tulosta_tiedot()
         {
-            Console.WriteLine();
             Console.WriteLine("-------------");
             Console.WriteLine(" Nimi: " + Nimi + " \n Ikä: " + Ika + " \n Arvosana: " + Arvosana);
             Console.WriteLine("-------------");
@@ -118,19 +116,23 @@ namespace OlioOhjelma5
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Veeti Eskelinen | Oliothetävä 4");
             string vastaus;
+            int valinta;
 
             Opiskelija[] oppilas = new Opiskelija[4];
             for (int i = 0; i < 4; i++)
             {
+                Console.WriteLine();
                 Console.Write("Luodaanko uusi opiskelija? (K/E): ");
                 vastaus = Console.ReadLine();
+                Console.WriteLine("-----------------------------------");
 
                 if (vastaus == "K" || vastaus == "k")
                 {
                     oppilas[i] = new Opiskelija();
 
-                    oppilas[i].luo_opiskelija();
+                    oppilas[i].Luo_opiskelija();
                 }
                 else
                 {
@@ -140,39 +142,100 @@ namespace OlioOhjelma5
                 }
             }
 
-            oppilas[0].tulosta_tiedot();
-            oppilas[1].tulosta_tiedot();
-            oppilas[2].tulosta_tiedot();
-            oppilas[3].tulosta_tiedot();
+            Console.WriteLine();
+            oppilas[0].Tulosta_tiedot();
+            Console.WriteLine();
+            oppilas[1].Tulosta_tiedot();
+            Console.WriteLine();
+            oppilas[2].Tulosta_tiedot();
+            Console.WriteLine();
+            oppilas[3].Tulosta_tiedot();
 
-            for (int i = 0; i < 4; i++)
+            tietojenMuutos:
+            Console.WriteLine();
+            Console.WriteLine("Kenen oppilaan tietoja haluatko muuttaa?");
+            Console.WriteLine("----------------------------------------");
+            Console.WriteLine(" 1.  |   {0}", oppilas[0].Nimi);
+            Console.WriteLine(" 2.  |   {0}", oppilas[1].Nimi);
+            Console.WriteLine(" 3.  |   {0}", oppilas[2].Nimi);
+            Console.WriteLine(" 4.  |   {0}", oppilas[3].Nimi);
+            Console.WriteLine(" 5.  |   Poistu");
+            Console.WriteLine("----------------------------------------");
+            Console.Write(">> ");
+            valinta = int.Parse(Console.ReadLine());
+
+            switch (valinta)
             {
-                Console.WriteLine();
-                Console.Write("Haluatko muuttaa tietoja? (K/E): ");
-                vastaus = Console.ReadLine();
-
-                if (vastaus == "K" || vastaus == "k")
-                {
-                    Console.Write("Anna oppilaan {0} uusi arvosana: ", oppilas[i].Nimi);
-                    oppilas[i].Arvosana = int.Parse(Console.ReadLine());
+                case 1:
                     Console.WriteLine();
-                    Console.WriteLine("Oppilaan {0} uusi arvosana on {1} ", oppilas[i].Nimi, oppilas[i].Arvosana);
-
-                    oppilas[i].vanhentuminen();
-                    Console.WriteLine("Oppilaan {0} uusi ikä on {1} ", oppilas[i].Nimi, oppilas[i].Ika);
-                }
-                else
-                {
-                    Console.WriteLine("Lopetetaan...");
+                    Console.Write("Anna oppilaan {0} uusi arvosana: ", oppilas[0].Nimi);
+                    oppilas[0].Arvosana = int.Parse(Console.ReadLine());
                     Console.WriteLine();
-                    return;
-                }
+                    Console.WriteLine("Oppilaan {0} uusi arvosana on {1} ", oppilas[0].Nimi, oppilas[0].Arvosana);
+
+                    oppilas[0].Vanhentuminen();
+                    Console.WriteLine("Oppilaan {0} uusi ikä on {1} ", oppilas[0].Nimi, oppilas[0].Ika);
+                    break;
+
+                case 2:
+                    Console.WriteLine();
+                    Console.Write("Anna oppilaan {0} uusi arvosana: ", oppilas[1].Nimi);
+                    oppilas[1].Arvosana = int.Parse(Console.ReadLine());
+                    Console.WriteLine();
+                    Console.WriteLine("Oppilaan {0} uusi arvosana on {1} ", oppilas[1].Nimi, oppilas[1].Arvosana);
+
+                    oppilas[1].Vanhentuminen();
+                    Console.WriteLine("Oppilaan {0} uusi ikä on {1} ", oppilas[1].Nimi, oppilas[1].Ika);
+                    break;
+
+                case 3:
+                    Console.WriteLine();
+                    Console.Write("Anna oppilaan {0} uusi arvosana: ", oppilas[2].Nimi);
+                    oppilas[2].Arvosana = int.Parse(Console.ReadLine());
+                    Console.WriteLine();
+                    Console.WriteLine("Oppilaan {0} uusi arvosana on {1} ", oppilas[2].Nimi, oppilas[2].Arvosana);
+
+                    oppilas[2].Vanhentuminen();
+                    Console.WriteLine("Oppilaan {0} uusi ikä on {1} ", oppilas[2].Nimi, oppilas[2].Ika);
+                    break;
+
+                case 4:
+                    Console.WriteLine();
+                    Console.Write("Anna oppilaan {0} uusi arvosana: ", oppilas[3].Nimi);
+                    oppilas[3].Arvosana = int.Parse(Console.ReadLine());
+                    Console.WriteLine();
+                    Console.WriteLine("Oppilaan {0} uusi arvosana on {1} ", oppilas[3].Nimi, oppilas[3].Arvosana);
+
+                    oppilas[3].Vanhentuminen();
+                    Console.WriteLine("Oppilaan {0} uusi ikä on {1} ", oppilas[3].Nimi, oppilas[3].Ika);
+                    break;
+
+                case 5:
+                    Console.WriteLine("Poistutaan loppu tulostuksiin...");
+                    goto loppu;
+
+                default:
+                    Console.WriteLine();
+                    Console.WriteLine("!!! Et valinnut oikeaa numeroa, kokeile uudelleen !!!");
+                    goto tietojenMuutos;
             }
 
-            oppilas[0].tulosta_tiedot();
-            oppilas[1].tulosta_tiedot();
-            oppilas[2].tulosta_tiedot();
-            oppilas[3].tulosta_tiedot();
+            Console.WriteLine();
+            Console.Write("Halutatko muuttaa toisen oppilaan tietoja? (K/E): ");
+            vastaus = Console.ReadLine();
+
+            if (vastaus == "K" || vastaus == "k") goto tietojenMuutos;
+            else goto loppu;
+
+            loppu:
+            Console.WriteLine();
+            oppilas[0].Tulosta_tiedot();
+            Console.WriteLine();
+            oppilas[1].Tulosta_tiedot();
+            Console.WriteLine();
+            oppilas[2].Tulosta_tiedot();
+            Console.WriteLine();
+            oppilas[3].Tulosta_tiedot();
 
             Console.WriteLine("Loit {0} opiskelijaa", Opiskelija.laskuri);
         }
